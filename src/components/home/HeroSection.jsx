@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="hero-section fade-in">
       <div className="logo-wrapper">
-        <img src="/images/logo.png" alt="Herliz Confecciones" />
+        <img src="/assets/images/logo.png" alt="Herliz Confecciones" />
       </div>
       
       <h1>

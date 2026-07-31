@@ -19,7 +19,6 @@ const ContactoPage = () => {
             <h3>Teléfonos</h3>
             <p><strong>963 382 211</strong></p>
             <p><strong>980 931 321</strong></p>
-            <small>Lun - Sab: 9am - 5pm</small>
           </div>
 
           <div className="contact-card">
@@ -33,10 +32,10 @@ const ContactoPage = () => {
           <div className="contact-card">
             <div className="contact-icon"></div>
             <h3>Horario de Atención</h3>
-            <p><strong>Lunes a Sábado</strong></p>
-            <p>9:00 am - 8:00 pm</p>
-            <p><strong>Domingo</strong></p>
-            <p>10:00 am - 4:00 pm</p>
+            <p><strong>Lunes</strong></p>
+            <p>9:30 am - 7:00 pm</p>
+            <p><strong>Sabado</strong></p>
+            <p>9:30 am - 5:00 pm</p>
           </div>
         </div>
 
