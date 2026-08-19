@@ -48,12 +48,12 @@ pipeline {
             steps {
                 bat '''
                     echo "=== Build completado ==="
-                    echo "Verificando carpeta dist..."
-                    if exist dist (
-                        echo ✅ Dist encontrado
-                        dir dist
+                    echo "Verificando carpeta build..."
+                    if exist build (
+                        echo ✅ Build encontrado
+                        dir build
                     ) else (
-                        echo ❌ No se encontró carpeta dist
+                        echo ❌ No se encontró carpeta build
                         dir
                     )
                 '''
@@ -64,11 +64,11 @@ pipeline {
             steps {
                 bat '''
                     echo "=== Empaquetando ==="
-                    if exist dist (
-                        powershell -Command "Compress-Archive -Path dist\\* -DestinationPath herliz-confecciones.zip -Force"
-                        echo ✅ ZIP creado
+                    if exist build (
+                        powershell -Command "Compress-Archive -Path build\\* -DestinationPath herliz-confecciones.zip -Force"
+                        echo ✅ ZIP creado desde build
                     ) else (
-                        echo ❌ No hay carpeta dist para empaquetar
+                        echo ❌ No hay carpeta build para empaquetar
                         exit /b 1
                     )
                 '''
@@ -82,13 +82,8 @@ pipeline {
             }
             steps {
                 echo '🚀 Configura aquí tu despliegue'
-                // Opción 1: Desplegar en IIS o servidor web
-                // bat 'xcopy /E /I dist C:\\inetpub\\wwwroot\\herliz-confecciones\\'
-                
-                // Opción 2: Desplegar con Docker
-                // bat 'docker build -t herliz-confecciones .'
-                // bat 'docker run -d -p 80:80 herliz-confecciones'
-                
+                // Para desplegar en IIS:
+                // bat 'xcopy /E /I build C:\\inetpub\\wwwroot\\herliz-confecciones\\'
                 echo '✅ Despliegue listo para configurar'
             }
         }
