@@ -18,7 +18,7 @@ const ContactoPage = () => {
             <div className="contact-icon"></div>
             <h3>Teléfonos</h3>
             <p><strong>963 382 211</strong></p>
-            <p><strong>980 931 321</strong></p>
+            <p><strong>+51 967 725 342</strong></p>
           </div>
 
           <div className="contact-card">
@@ -51,7 +51,7 @@ const ContactoPage = () => {
             <a href="https://www.tiktok.com/@herliz.confecciones" target="_blank" rel="noopener noreferrer" className="social-link tiktok">
               TikTok
             </a>
-            <a href="https://wa.me/51980931321" target="_blank" rel="noopener noreferrer" className="social-link whatsapp">
+            <a href="https://wa.me/51967725342" target="_blank" rel="noopener noreferrer" className="social-link whatsapp">
               WhatsApp
             </a>
           </div>

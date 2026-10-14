@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import MenuHamburger from './MenuHamburger';
-import CartButton from './CartButton';
 import './Header.css';
 
 const Header = () => {
@@ -13,7 +12,7 @@ const Header = () => {
     setIsMenuOpen(false);
   }, [location]);
 
-  // Cerrar menú con ESC - optimizado
+  // Cerrar menú con ESC
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
@@ -61,7 +60,7 @@ const Header = () => {
             <span>Herliz</span> Confecciones
           </Link>
           <div className="header-actions">
-            <CartButton />
+            {/* Aquí puedes poner un botón de WhatsApp o lo que quieras */}
           </div>
         </div>
       </header>

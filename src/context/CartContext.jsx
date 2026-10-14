@@ -26,6 +26,7 @@ export const CartProvider = ({ children }) => {
       }
       return [...prev, { ...product, quantity: 1 }];
     });
+    setIsCartOpen(true); // Abre el carrito automáticamente al agregar
   };
 
   const removeFromCart = (id) => {
@@ -48,10 +49,6 @@ export const CartProvider = ({ children }) => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
 
-  const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
   const clearCart = () => {
     setCartItems([]);
   };
@@ -67,25 +64,22 @@ export const CartProvider = ({ children }) => {
       minute: '2-digit'
     });
 
-    let mensaje = ' *COTIZACIÓN HERLIZ CONFECCIONES*\n';
+    let mensaje = ' *CONSULTA HERLIZ CONFECCIONES*\n';
     mensaje += ` ${fecha} - ${hora}\n`;
     mensaje += '━━━━━━━━━━━━━━━━━━━━━━\n\n';
-    mensaje += '* DETALLE DEL PEDIDO:*\n\n';
+    mensaje += '* PRODUCTOS DE INTERÉS:*\n\n';
 
     cartItems.forEach((item, index) => {
       mensaje += `${index + 1}. *${item.name}*\n`;
-      mensaje += `   Cantidad: ${item.quantity}\n`;
-      mensaje += `   Precio unitario: S/${item.price.toFixed(2)}\n`;
-      mensaje += `   Subtotal: S/${(item.price * item.quantity).toFixed(2)}\n\n`;
+      mensaje += `   Cantidad: ${item.quantity}\n\n`;
     });
 
     mensaje += '━━━━━━━━━━━━━━━━━━━━━━\n';
-    mensaje += `* TOTAL: S/${getTotalPrice().toFixed(2)}*\n`;
-    mensaje += ` *${getTotalItems()} productos* seleccionados\n\n`;
+    mensaje += `*${getTotalItems()} productos* seleccionados\n\n`;
     mensaje += '━━━━━━━━━━━━━━━━━━━━━━\n';
     mensaje += '*Dirección:* Jr. Gamarra N° 1010 - 2do. Piso Tienda 205\n';
     mensaje += '*Contacto:* 963 382 211 / 980 931 321\n\n';
-    mensaje += '*¡Esperamos su confirmación!*';
+    mensaje += '*¡Espero su respuesta, gracias!*';
 
     return encodeURIComponent(mensaje);
   };
@@ -96,7 +90,6 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     updateQuantity,
     getTotalItems,
-    getTotalPrice,
     clearCart,
     isCartOpen,
     setIsCartOpen,

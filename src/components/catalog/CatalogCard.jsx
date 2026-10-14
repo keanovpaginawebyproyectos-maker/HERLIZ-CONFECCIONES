@@ -1,10 +1,7 @@
 import React from 'react';
-import { useCart } from '../../context/CartContext';
+import './CatalogCard.css';
 
 const CatalogCard = ({ product, index }) => {
-  const { addToCart } = useCart();
-
-  // Obtener nombre de categoría
   const getCategoryName = (catId) => {
     const map = {
       'bolsos': 'Bolsos',
@@ -23,38 +20,17 @@ const CatalogCard = ({ product, index }) => {
   };
 
   return (
-    <div 
-      className="product-card"
-      style={{ animationDelay: `${index * 0.05}s` }}
-    >
+    <article className="product-card">
       <div className="product-image-wrapper">
         <img src={product.image} alt={product.name} loading="lazy" />
-        <button 
-          className="btn-add-cart"
-          onClick={() => addToCart(product)}
-          aria-label="Agregar al carrito"
-        >
-          +
-        </button>
       </div>
       <div className="product-info">
         <span className="product-category">
           {getCategoryName(product.category)}
         </span>
         <h3>{product.name}</h3>
-        <div className="product-footer">
-          <div className="product-price">
-            <span className="price-main">S/{product.price.toFixed(2)}</span>
-          </div>
-          <button 
-            className="btn-add-cart-text"
-            onClick={() => addToCart(product)}
-          >
-            Agregar
-          </button>
-        </div>
       </div>
-    </div>
+    </article>
   );
 };
 

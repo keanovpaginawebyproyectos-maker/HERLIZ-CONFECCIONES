@@ -12,29 +12,35 @@ const CatalogGrid = () => {
     : products.filter(p => p.category === selectedCategory);
 
   return (
-    <div className="catalog-container fade-in">
+    <div className="catalog-container">
       <div className="catalog-header">
         <h1>Nuestra Colección</h1>
         <p>Descubre prendas exclusivas con la mejor calidad</p>
       </div>
 
-      <CategoryFilter 
-        selectedCategory={selectedCategory} 
-        onCategoryChange={setSelectedCategory} 
-      />
+      <div className="catalog-layout">
+        <aside className="catalog-sidebar">
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+          />
+        </aside>
 
-      {filteredProducts.length === 0 ? (
-        <div className="empty-state">
-          <span className="empty-icon">🔍</span>
-          <p>No hay productos en esta categoría</p>
-        </div>
-      ) : (
-        <div className="products-grid">
-          {filteredProducts.map((product, index) => (
-            <CatalogCard key={product.id} product={product} index={index} />
-          ))}
-        </div>
-      )}
+        <section className="catalog-products">
+          {filteredProducts.length === 0 ? (
+            <div className="empty-state">
+              <span className="empty-icon">🔍</span>
+              <p>No hay productos en esta categoría</p>
+            </div>
+          ) : (
+            <div className="products-grid">
+              {filteredProducts.map((product, index) => (
+                <CatalogCard key={product.id} product={product} index={index} />
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 };

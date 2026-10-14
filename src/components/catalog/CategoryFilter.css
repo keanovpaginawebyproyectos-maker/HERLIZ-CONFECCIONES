@@ -1,0 +1,231 @@
+/* ============================
+   VARIABLES DE MARCA
+   ============================ */
+:root {
+  --primary-start: #00BCD4;
+  --primary-end: #9C27B0;
+  --gradient: linear-gradient(135deg, #00BCD4, #9C27B0);
+}
+
+/* ============================
+   CONTENEDOR DEL FILTRO
+   ============================ */
+.category-filter-wrapper {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #EFE7DC;
+  border-radius: 14px;
+  padding: 18px 0;
+  box-shadow: 0 2px 10px rgba(0, 188, 212, 0.06);
+}
+
+.category-filter-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  padding: 0 20px 14px;
+  margin: 0;
+  border-bottom: 1px solid #F2EDE7;
+}
+
+/* ============================
+   LISTA VERTICAL (SOLO PC)
+   ============================ */
+.category-filter {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #9C27B0 #F2EDE7;
+}
+
+.category-filter::-webkit-scrollbar {
+  width: 6px;
+}
+
+.category-filter::-webkit-scrollbar-track {
+  background: #F2EDE7;
+  border-radius: 10px;
+}
+
+.category-filter::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00BCD4, #9C27B0);
+  border-radius: 10px;
+}
+
+.category-filter::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00A5BB, #831FA0);
+}
+
+/* ============================
+   BOTONES DE LA LISTA (PC)
+   ============================ */
+.category-btn {
+  width: 100%;
+  text-align: left;
+  padding: 11px 20px;
+  background-color: transparent;
+  color: #4A3B2F;
+  border: none;
+  border-left: 3px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.category-btn:hover {
+  background-color: #F4FBFC;
+  color: #006B7A;
+}
+
+.category-btn.active {
+  background: linear-gradient(90deg, rgba(0, 188, 212, 0.10), rgba(156, 39, 176, 0.08));
+  color: #6A1B8A;
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, #00BCD4, #9C27B0) 1;
+  font-weight: 700;
+}
+
+.category-btn:focus-visible {
+  outline: 2px solid #00BCD4;
+  outline-offset: -2px;
+}
+
+/* ============================
+   SELECTOR DESPLEGABLE (OCULTO EN PC)
+   ============================ */
+.category-dropdown {
+  display: none;
+}
+
+/* ============================
+   MÓVIL (≤ 768px)
+   - Se oculta la lista vertical
+   - Se muestra el selector desplegable
+   ============================ */
+@media (max-width: 768px) {
+  .category-filter-wrapper {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 188, 212, 0.08);
+  }
+
+  .category-filter-title {
+    padding: 0 0 12px;
+    font-size: 11px;
+    border-bottom: 1px solid #F2EDE7;
+    margin-bottom: 14px;
+  }
+
+  /* Ocultar lista vertical */
+  .category-filter {
+    display: none;
+  }
+
+  /* Mostrar selector */
+  .category-dropdown {
+    display: block;
+    position: relative;
+  }
+
+  .category-dropdown-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    background-color: #FFFFFF;
+    border: 1.5px solid #E2D9CE;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3B2C20;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+  }
+
+  .category-dropdown-toggle:active,
+  .category-dropdown-toggle.open {
+    border-color: #00BCD4;
+    background-color: #F4FBFC;
+  }
+
+  .dropdown-arrow {
+    font-size: 14px;
+    color: #9C27B0;
+    transition: transform 0.2s ease;
+  }
+
+  .dropdown-arrow.up {
+    transform: rotate(180deg);
+  }
+
+  /* Menú desplegable */
+  .category-dropdown-menu {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 6px 0;
+    background-color: #FFFFFF;
+    border: 1px solid #EFE7DC;
+    border-radius: 10px;
+    max-height: 260px;
+    overflow-y: auto;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    scrollbar-width: thin;
+    scrollbar-color: #9C27B0 #F2EDE7;
+  }
+
+  .category-dropdown-menu::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .category-dropdown-menu::-webkit-scrollbar-track {
+    background: #F2EDE7;
+    border-radius: 10px;
+  }
+
+  .category-dropdown-menu::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00BCD4, #9C27B0);
+    border-radius: 10px;
+  }
+
+  .category-dropdown-item {
+    width: 100%;
+    text-align: left;
+    padding: 11px 16px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: #4A3B2F;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .category-dropdown-item:hover,
+  .category-dropdown-item:active {
+    background-color: #F4FBFC;
+    color: #006B7A;
+  }
+
+  .category-dropdown-item.active {
+    background: linear-gradient(90deg, rgba(0, 188, 212, 0.12), rgba(156, 39, 176, 0.10));
+    color: #6A1B8A;
+    font-weight: 700;
+  }
+}

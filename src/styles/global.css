@@ -18,19 +18,34 @@
   --radius: 16px;
   --radius-lg: 24px;
   --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient: linear-gradient(135deg, var(--primary-start), var(--primary-end));
 }
 
-/* ===== BODY ===== */
+/* ===== HTML y BODY ===== */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
   background-size: 200% 200%;
+  background-attachment: fixed; /* ✅ evita que el fondo se mueva feo */
   animation: gradientShift 14s ease-in-out infinite;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: var(--text-light);
   min-height: 100vh;
   padding-top: 70px;
+  width: 100%;
+  overflow-x: hidden; /* ✅ evita scroll horizontal */
+  position: relative;
+}
+
+#root {
+  width: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 @keyframes gradientShift {
@@ -39,20 +54,36 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== SCROLLBAR ===== */
+/* ===== IMÁGENES ===== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== SCROLLBAR GLOBAL ===== */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+  background: linear-gradient(180deg, var(--primary-start), var(--primary-end));
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: linear-gradient(180deg, #00A5BB, #831FA0);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9C27B0 rgba(255, 255, 255, 0.05);
 }
 
 /* ===== UTILITY ===== */
@@ -60,6 +91,7 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
 }
 
 .fade-in {
@@ -146,4 +178,29 @@ body {
   background: rgba(255, 255, 255, 0.16);
   border-color: var(--gold);
   transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE GLOBAL ===== */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+    background-attachment: scroll; /* ✅ en móvil evita problemas de rendimiento */
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 14px;
+  }
 }
