@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './HeroSection.css';
+import './HeroSection.css'; //  Corregido: ./ en lugar de ../
 
 const HeroSection = () => {
   return (

@@ -16,11 +16,12 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
+/* Transición más rápida y ligera (sin lag) */
 .carousel-track {
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s ease-in-out; 
   position: absolute;
   top: 0;
   left: 0;
@@ -55,21 +56,10 @@
   padding: 40px;
 }
 
+/* Animación slideIn eliminada */
 .slide-content {
   text-align: center;
   color: #fff;
-  animation: slideIn 0.8s ease;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .slide-content h2 {
@@ -107,13 +97,13 @@
   background: rgba(255, 255, 255, 0.3);
   border: 2px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  transition: all 0.3s ease;
+  /* Transición simple */
+  transition: width 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
   padding: 0;
 }
 
 .dot:hover {
   background: rgba(255, 255, 255, 0.5);
-  transform: scale(1.2);
 }
 
 .dot.active {

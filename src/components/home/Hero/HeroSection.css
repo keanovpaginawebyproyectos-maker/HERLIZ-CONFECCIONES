@@ -6,7 +6,7 @@
   animation: fadeInUp 0.8s ease;
 }
 
-/* ===== LOGO ===== */
+/* ===== LOGO (Estático, sin lag) ===== */
 .logo-wrapper {
   padding: 20px;
   margin-bottom: 20px;
@@ -18,8 +18,9 @@
   height: auto;
   display: inline-block;
   filter: drop-shadow(0 8px 40px rgba(0, 0, 0, 0.25));
-  transition: var(--transition);
-  animation: float 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  /* Animación infinita eliminada para evitar el lag */
+  will-change: transform;
 }
 
 .logo-wrapper img:hover {

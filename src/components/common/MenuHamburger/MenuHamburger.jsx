@@ -1,5 +1,5 @@
 import React from 'react';
-import './MenuHamburger.css';
+import './MenuHamburger.css'; //  Corregido: ./ en lugar de ../
 
 const MenuHamburger = ({ isOpen, setIsOpen }) => {
   return (

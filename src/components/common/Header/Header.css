@@ -3,12 +3,15 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /*  Fondo transparente para integrarse con el degradado de la página */
+  background: transparent;
+  /* Efecto cristal sutil (opcional, puedes quitarlo si quieres 100% transparente) */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
   padding: 12px 24px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  /* Sombra muy suave para no romper la estética */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   will-change: transform;
 }
 
@@ -28,6 +31,8 @@
   color: #fff;
   text-decoration: none;
   transition: transform 0.2s ease;
+  /* Sombra al texto para que resalte sobre el fondo celeste/morado */
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .site-title:hover {
@@ -38,6 +43,8 @@
   background: linear-gradient(90deg, var(--gold), var(--gold-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Quitamos la sombra del span para que el degradado dorado se vea limpio */
+  text-shadow: none;
 }
 
 .header-actions {

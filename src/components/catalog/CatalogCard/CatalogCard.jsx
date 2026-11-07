@@ -1,20 +1,14 @@
+// CatalogCard.jsx (Sin cambios, está perfecto)
 import React from 'react';
 import './CatalogCard.css';
 
 const CatalogCard = ({ product, index }) => {
   const getCategoryName = (catId) => {
     const map = {
-      'bolsos': 'Bolsos',
-      'camisas': 'Camisas',
-      'casacas': 'Casacas',
-      'chalecos': 'Chalecos',
-      'gorros': 'Gorros',
-      'mamelucos': 'Mamelucos',
-      'mandiles': 'Mandiles',
-      'mochilas': 'Mochilas',
-      'pantalones': 'Pantalones',
-      'polos': 'Polos',
-      'vestidos': 'Vestidos'
+      'bolsos': 'Bolsos', 'camisas': 'Camisas', 'casacas': 'Casacas',
+      'chalecos': 'Chalecos', 'gorros': 'Gorros', 'mamelucos': 'Mamelucos',
+      'mandiles': 'Mandiles', 'mochilas': 'Mochilas', 'pantalones': 'Pantalones',
+      'polos': 'Polos', 'vestidos': 'Vestidos'
     };
     return map[catId] || catId;
   };

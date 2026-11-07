@@ -26,6 +26,26 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Estilo para los enlaces dentro del footer (correo, teléfono, dirección) */
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+/* Iconos SVG del footer-info */
+.footer-info svg {
+  flex-shrink: 0;
+  color: var(--gold);
+  opacity: 0.9;
 }
 
 .social-footer {
@@ -58,15 +78,63 @@
   letter-spacing: 0.5px;
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 650px) {
+  .footer {
+    padding: 22px 16px 16px;
+  }
+
   .footer-info {
     font-size: 0.75rem;
-    gap: 8px 16px;
+    gap: 10px 16px;
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
+
+  .footer-info span {
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  /* La dirección en móvil puede ser larga, le damos un ancho controlado */
+  .footer-info span:last-child {
+    max-width: 280px;
+    line-height: 1.4;
+  }
+
+  .social-footer {
+    gap: 20px;
+    margin: 14px 0 10px;
+  }
+
   .social-footer svg {
     width: 32px;
     height: 32px;
+  }
+
+  .autor {
+    font-size: 0.7rem;
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-info {
+    font-size: 0.7rem;
+  }
+
+  .social-footer {
+    gap: 16px;
+  }
+
+  .social-footer svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer-info span:last-child {
+    max-width: 240px;
   }
 }

@@ -1,29 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import MenuHamburger from './MenuHamburger';
-import './Header.css';
+import MenuHamburger from '../MenuHamburger/MenuHamburger'; // orrecto
+import './Header.css'; //  Corregido: ./ en lugar de ../
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Cerrar menú al cambiar de página
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  // Cerrar menú con ESC
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        setIsMenuOpen(false);
-      }
+      if (e.key === 'Escape') setIsMenuOpen(false);
     };
     document.addEventListener('keydown', handleEsc);
     return () => document.removeEventListener('keydown', handleEsc);
   }, []);
 
-  // Prevenir scroll cuando menú está abierto
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -59,31 +54,19 @@ const Header = () => {
           <Link to="/" className="site-title">
             <span>Herliz</span> Confecciones
           </Link>
-          <div className="header-actions">
-            {/* Aquí puedes poner un botón de WhatsApp o lo que quieras */}
-          </div>
+          <div className="header-actions"></div>
         </div>
       </header>
 
-      {/* Overlay */}
-      <div 
-        className={`nav-overlay ${isMenuOpen ? 'active' : ''}`} 
-        onClick={closeMenu}
-        aria-hidden="true"
-      />
+      <div className={`nav-overlay ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu} aria-hidden="true" />
 
-      {/* Menú lateral */}
       <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`} role="navigation">
         <div className="nav-header">
           <div className="nav-brand">Menú <span>Principal</span></div>
         </div>
         
         {navLinks.map((link) => (
-          <Link 
-            key={link.to} 
-            to={link.to} 
-            onClick={closeMenu}
-          >
+          <Link key={link.to} to={link.to} onClick={closeMenu}>
             {link.label}
           </Link>
         ))}

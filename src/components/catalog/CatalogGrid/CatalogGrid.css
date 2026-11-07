@@ -6,7 +6,8 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 40px 20px 60px;
-  overflow-x: hidden;   /* evita scroll horizontal feo */
+  overflow-x: hidden;
+  /* Animación eliminada para evitar lag */
 }
 
 /* ============================
@@ -17,18 +18,26 @@
   margin-bottom: 40px;
 }
 
+/* Título con degradado dorado/blanco */
 .catalog-header h1 {
-  font-size: 34px;
-  font-weight: 700;
-  color: #3B2C20;
-  margin: 0 0 8px;
+  font-size: 38px;
+  font-weight: 800;
+  margin: 0 0 12px;
   letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff 30%, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Subtítulo */
 .catalog-header p {
-  color: #7A6A5C;
-  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
   margin: 0;
+  font-weight: 400;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* ============================
@@ -65,15 +74,19 @@
 .empty-state {
   text-align: center;
   padding: 80px 20px;
-  color: #7A6A5C;
-  background-color: #FAF6F1;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .empty-icon {
-  font-size: 48px;
+  width: 48px;
+  height: 48px;
   display: block;
-  margin-bottom: 12px;
+  margin: 0 auto 12px;
+  opacity: 0.8;
+  color: var(--gold);
 }
 
 /* ============================
@@ -104,14 +117,13 @@
   }
 
   .catalog-header h1 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .catalog-header p {
     font-size: 14px;
   }
 
-  /* En móvil, una sola columna: filtro arriba, productos abajo */
   .catalog-layout {
     grid-template-columns: 1fr;
     gap: 20px;

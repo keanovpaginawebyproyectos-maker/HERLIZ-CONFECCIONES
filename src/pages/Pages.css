@@ -47,9 +47,18 @@
   border-color: rgba(253, 216, 53, 0.1);
 }
 
+/* ESTILO PARA ICONOS SVG (Tamaño reducido y elegante) */
 .contact-icon {
-  font-size: 2.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 12px;
+}
+
+.contact-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--gold);
 }
 
 .contact-card h3 {
@@ -69,6 +78,19 @@
   font-size: 0.8rem;
 }
 
+/* ENLACES CLIQUEABLES (Correo, Teléfonos, Dirección) */
+.contact-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  cursor: pointer;
+}
+
+.contact-link:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
 /* ===== SOCIAL ===== */
 .contact-social {
   text-align: center;
@@ -85,36 +107,70 @@
 .social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
 }
 
+/* ESTILO DE BOTONES CON ICONOS */
 .social-link {
-  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 26px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: var(--transition);
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Efecto de brillo al pasar el mouse */
+.social-link::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.social-link:hover::after {
+  opacity: 1;
 }
 
 .social-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Colores oficiales */
 .social-link.facebook {
   background: #1877f2;
 }
 
 .social-link.instagram {
-  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 
 .social-link.tiktok {
   background: #000;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .social-link.whatsapp {
@@ -269,6 +325,14 @@
   .about-stats {
     grid-template-columns: 1fr 1fr;
   }
+  .social-link {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -292,14 +356,24 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  .social-link {
-    padding: 8px 20px;
-    font-size: 0.8rem;
-  }
   .contact-card {
     padding: 20px 16px;
   }
-  .contact-icon {
-    font-size: 2rem;
+  .contact-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  /* En móviles muy pequeños, los botones se apilan */
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .social-link {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
   }
 }
