@@ -2,7 +2,7 @@
    CONTENEDOR DE CATEGORÍAS
    ============================ */
 .category-filter {
-  background: rgba(0, 0, 0, 0.25); /* Fondo oscuro semitransparente */
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
@@ -23,7 +23,7 @@
 }
 
 /* ============================
-   LISTA DE BOTONES
+   LISTA DE BOTONES (PC)
    ============================ */
 .category-list {
   display: flex;
@@ -31,13 +31,10 @@
   gap: 8px;
 }
 
-/* ============================
-   BOTÓN DE CATEGORÍA
-   ============================ */
 .category-btn {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.75); /* Texto blanco semitransparente */
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.95rem;
   font-weight: 500;
   text-align: left;
@@ -53,10 +50,9 @@
 .category-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  padding-left: 20px; /* Pequeño efecto de desplazamiento */
+  padding-left: 20px;
 }
 
-/* Estado activo (Categoría seleccionada) */
 .category-btn.active {
   background: linear-gradient(90deg, rgba(253, 216, 53, 0.15), transparent);
   color: var(--gold);
@@ -64,7 +60,6 @@
   box-shadow: inset 0 0 0 1px rgba(253, 216, 53, 0.2);
 }
 
-/* Barrita dorada a la izquierda del botón activo */
 .category-btn.active::before {
   content: '';
   position: absolute;
@@ -77,36 +72,61 @@
   border-radius: 0 4px 4px 0;
 }
 
+/* Ocultamos el select en PC */
+.mobile-select-wrapper {
+  display: none;
+}
+
 /* ============================
    MÓVIL (≤ 768px)
    ============================ */
 @media (max-width: 768px) {
   .category-filter {
     padding: 16px;
+    margin-bottom: 10px; /* Un pequeño margen para separar de los productos */
   }
 
-  .category-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
+  /* Ocultamos la lista de botones en celular */
+  .desktop-list {
+    display: none;
   }
 
-  .category-btn {
-    width: auto;
-    font-size: 0.85rem;
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
+  /* Mostramos el menú desplegable */
+  .mobile-select-wrapper {
+    display: block;
+    width: 100%;
   }
 
-  .category-btn.active {
-    background: var(--gold);
-    color: #1a1a2e;
+  .mobile-select {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    appearance: none; /* Quita la flecha por defecto en algunos navegadores */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Añade un icono de flecha personalizado (opcional, usando SVG en background) */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+  }
+
+  .mobile-select:focus {
     border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(253, 216, 53, 0.2);
   }
-  
-  .category-btn.active::before {
-    display: none; /* Ocultamos la barrita dorada en móvil */
+
+  /* Estilo para las opciones dentro del select (limitado por el navegador) */
+  .mobile-select option {
+    background-color: #1a1a2e; /* Fondo oscuro para que el texto blanco se lea */
+    color: #ffffff;
+    padding: 10px;
   }
 }

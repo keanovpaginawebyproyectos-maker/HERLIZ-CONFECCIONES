@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CategoryFilter.css';
 
 const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
@@ -20,7 +20,9 @@ const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
   return (
     <div className="category-filter">
       <h3>Categorías</h3>
-      <div className="category-list">
+      
+      {/* En PC se ven los botones (esto lo controla el CSS) */}
+      <div className="category-list desktop-list">
         {categories.map((cat) => (
           <button
             key={cat.id}
@@ -30,6 +32,21 @@ const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
             {cat.label}
           </button>
         ))}
+      </div>
+
+      {/* En celular se ve un menú desplegable (select) */}
+      <div className="mobile-select-wrapper">
+        <select 
+          className="mobile-select" 
+          value={selectedCategory} 
+          onChange={(e) => onCategoryChange(e.target.value)}
+        >
+          {categories.map((cat) => (
+            <option key={cat.id} value={cat.id}>
+              {cat.label}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );
