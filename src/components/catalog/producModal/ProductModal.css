@@ -1,0 +1,185 @@
+/* ============================
+   OVERLAY
+   ============================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* ============================
+   CONTENIDO DEL MODAL — MARCO GLASS
+   ============================ */
+.modal-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius, 16px);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow, 0 8px 32px rgba(0, 0, 0, 0.3));
+}
+
+/* ============================
+   BOTÓN CERRAR
+   ============================ */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-close:hover {
+  background: var(--gold, #d4af37);
+  color: #1a1a2e;
+  border-color: var(--gold, #d4af37);
+}
+
+/* ============================
+   IMAGEN — MARCO COMPLETO
+   ============================ */
+.modal-image-wrapper {
+  width: 100%;
+  max-height: 70vh;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================
+   INFO DEL PRODUCTO
+   ============================ */
+.modal-info {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light, #fff);
+  background: rgba(255, 255, 255, 0.04);
+  overflow-y: auto;
+}
+
+.modal-info h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.modal-price {
+  margin: 0 0 10px;
+  color: var(--gold, #d4af37);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-description {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ============================
+   RESPONSIVE — TABLET
+   ============================ */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .modal-content {
+    max-height: 92vh;
+    border-radius: 12px;
+  }
+
+  .modal-image-wrapper {
+    max-height: 50vh;
+  }
+
+  .modal-image {
+    max-height: 50vh;
+  }
+
+  .modal-info {
+    padding: 16px 18px;
+  }
+
+  .modal-info h2 {
+    font-size: 18px;
+  }
+
+  .modal-price {
+    font-size: 16px;
+  }
+
+  .modal-description {
+    font-size: 13px;
+  }
+}
+
+/* ============================
+   RESPONSIVE — MÓVIL PEQUEÑO
+   ============================ */
+@media (max-width: 400px) {
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    top: 8px;
+    right: 8px;
+  }
+
+  .modal-image-wrapper,
+  .modal-image {
+    max-height: 45vh;
+  }
+
+  .modal-info {
+    padding: 14px 14px;
+  }
+
+  .modal-info h2 {
+    font-size: 16px;
+  }
+}

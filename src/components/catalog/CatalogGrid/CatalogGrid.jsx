@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { products } from '../../../data/catalogData';
 import CategoryFilter from '../CategoryFilter/CategoryFilter';
 import CatalogCard from '../CatalogCard/CatalogCard';
+import ProductModal from '../producModal/ProductModal';
 import './CatalogGrid.css';
 
 const CatalogGrid = () => {
   const [selectedCategory, setSelectedCategory] = useState('todos');
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const filteredProducts = selectedCategory === 'todos'
-    ? products
-    : products.filter(p => p.category === selectedCategory);
+  const filteredProducts =
+    selectedCategory === 'todos'
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   return (
     <div className="catalog-container">
@@ -29,7 +32,15 @@ const CatalogGrid = () => {
         <section className="catalog-products">
           {filteredProducts.length === 0 ? (
             <div className="empty-state">
-              <svg className="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                className="empty-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
@@ -37,13 +48,22 @@ const CatalogGrid = () => {
             </div>
           ) : (
             <div className="products-grid">
-              {filteredProducts.map((product, index) => (
-                <CatalogCard key={product.id} product={product} index={index} />
+              {filteredProducts.map((product) => (
+                <CatalogCard
+                  key={product.id}
+                  product={product}
+                  onClick={() => setSelectedProduct(product)}
+                />
               ))}
             </div>
           )}
         </section>
       </div>
+
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
     </div>
   );
 };
