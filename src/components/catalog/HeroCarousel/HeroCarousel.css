@@ -1,5 +1,5 @@
 /* ============================
-   CONTENEDOR PRINCIPAL — FULL BLEED Y TRANSPARENTE
+   CONTENEDOR PRINCIPAL — FULL BLEED
    ============================ */
 .hero-carousel {
   width: 100vw;
@@ -16,7 +16,7 @@
 }
 
 /* ============================
-   CONTENEDOR DEL TRACK — altura automática
+   CONTENEDOR DEL TRACK
    ============================ */
 .carousel-container {
   position: relative;
@@ -26,39 +26,51 @@
 }
 
 /* ============================
-   TRACK — flex horizontal, sin altura fija
+   TRACK
    ============================ */
 .carousel-track {
   display: flex;
   width: 100%;
   transition: transform 0.5s ease-in-out;
   position: relative;
-  align-items: flex-start;   /* 👈 los slides no se estiran a la altura del más alto */
 }
 
 /* ============================
-   SLIDE — ancho 100%, alto definido por la imagen
+   SLIDE — altura uniforme
    ============================ */
 .carousel-slide {
   flex: 0 0 100%;
   width: 100%;
+  height: 600px;
   position: relative;
+  overflow: hidden;
   background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 /* ============================
-   IMAGEN — llena el ancho, sin recortes, sin vacíos laterales
+   FONDO DIFUMINADO
+   ============================ */
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) brightness(0.55);
+  transform: scale(1.15);
+  z-index: 0;
+}
+
+/* ============================
+   IMAGEN PRINCIPAL — completa, sin recortes
    ============================ */
 .carousel-slide img {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: auto;
-  max-height: 600px;
+  height: 100%;
   object-fit: contain;
+  object-position: center;
   display: block;
-  margin: 0 auto;
 }
 
 /* ============================
@@ -67,6 +79,7 @@
 .slide-overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background: linear-gradient(
     135deg,
     rgba(0, 0, 0, 0.45) 0%,
@@ -82,6 +95,7 @@
 .slide-content {
   text-align: center;
   color: #fff;
+  max-width: 900px;
 }
 
 .slide-content h2 {
@@ -89,13 +103,13 @@
   font-weight: 900;
   margin-bottom: 8px;
   color: var(--gold, #fdd835);
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .slide-content p {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
   font-weight: 400;
   letter-spacing: 1px;
 }
@@ -137,78 +151,41 @@
 /* ============================
    RESPONSIVE
    ============================ */
+@media (min-width: 1600px) {
+  .carousel-slide { height: 700px; }
+  .slide-content h2 { font-size: 3.6rem; }
+  .slide-content p { font-size: 1.4rem; }
+}
+
 @media (max-width: 1024px) {
-  .carousel-slide img {
-    max-height: 450px;
-  }
-  .slide-content h2 {
-    font-size: 2.4rem;
-  }
+  .carousel-slide { height: 480px; }
+  .slide-content h2 { font-size: 2.4rem; }
+  .slide-content p { font-size: 1.1rem; }
 }
 
 @media (max-width: 768px) {
-  .hero-carousel {
-    margin-bottom: 30px;
-  }
-  .carousel-slide img {
-    max-height: 380px;
-  }
-  .slide-content h2 {
-    font-size: 1.8rem;
-  }
-  .slide-content p {
-    font-size: 1rem;
-  }
-  .slide-overlay {
-    padding: 20px;
-  }
-  .carousel-dots {
-    bottom: 12px;
-    gap: 8px;
-  }
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-  .dot.active {
-    width: 24px;
-  }
+  .hero-carousel { margin-bottom: 30px; }
+  .carousel-slide { height: 400px; }
+  .slide-content h2 { font-size: 1.8rem; }
+  .slide-content p { font-size: 1rem; }
+  .slide-overlay { padding: 20px; }
+  .carousel-dots { bottom: 12px; gap: 8px; }
+  .dot { width: 8px; height: 8px; }
+  .dot.active { width: 24px; }
 }
 
 @media (max-width: 480px) {
-  .carousel-slide img {
-    max-height: 300px;
-  }
-  .slide-overlay {
-    padding: 16px;
-  }
-  .slide-content h2 {
-    font-size: 1.3rem;
-  }
-  .slide-content p {
-    font-size: 0.8rem;
-  }
-  .carousel-dots {
-    bottom: 8px;
-    gap: 6px;
-  }
-  .dot {
-    width: 6px;
-    height: 6px;
-  }
-  .dot.active {
-    width: 18px;
-  }
+  .carousel-slide { height: 320px; }
+  .slide-overlay { padding: 16px; }
+  .slide-content h2 { font-size: 1.3rem; }
+  .slide-content p { font-size: 0.85rem; }
+  .carousel-dots { bottom: 8px; gap: 6px; }
+  .dot { width: 6px; height: 6px; }
+  .dot.active { width: 18px; }
 }
 
 @media (max-width: 380px) {
-  .carousel-slide img {
-    max-height: 240px;
-  }
-  .slide-content h2 {
-    font-size: 1rem;
-  }
-  .slide-content p {
-    font-size: 0.7rem;
-  }
+  .carousel-slide { height: 260px; }
+  .slide-content h2 { font-size: 1.1rem; }
+  .slide-content p { font-size: 0.75rem; }
 }
