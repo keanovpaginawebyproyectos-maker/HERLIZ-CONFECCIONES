@@ -1,62 +1,84 @@
+/* ============================
+   CONTENEDOR PRINCIPAL — FULL BLEED Y TRANSPARENTE
+   ============================ */
 .hero-carousel {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto 40px;
-  border-radius: var(--radius-lg);
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0;
+  margin-bottom: 40px;
+  border-radius: 0;
   overflow: hidden;
+  background: transparent;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
+/* ============================
+   CONTENEDOR DEL TRACK — altura automática
+   ============================ */
 .carousel-container {
   position: relative;
   width: 100%;
-  padding-top: 35%;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.3);
+  background: transparent;
 }
 
-/* Transición más rápida y ligera (sin lag) */
+/* ============================
+   TRACK — flex horizontal, sin altura fija
+   ============================ */
 .carousel-track {
   display: flex;
   width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease-in-out; 
-  position: absolute;
-  top: 0;
-  left: 0;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+  align-items: flex-start;   /* 👈 los slides no se estiran a la altura del más alto */
 }
 
+/* ============================
+   SLIDE — ancho 100%, alto definido por la imagen
+   ============================ */
 .carousel-slide {
   flex: 0 0 100%;
-  height: 100%;
+  width: 100%;
   position: relative;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
+/* ============================
+   IMAGEN — llena el ancho, sin recortes, sin vacíos laterales
+   ============================ */
 .carousel-slide img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
+/* ============================
+   OVERLAY DEL TEXTO
+   ============================ */
 .slide-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.2) 100%
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.05) 100%
   );
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
+  pointer-events: none;
 }
 
-/* Animación slideIn eliminada */
 .slide-content {
   text-align: center;
   color: #fff;
@@ -66,20 +88,21 @@
   font-size: 3rem;
   font-weight: 900;
   margin-bottom: 8px;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #fff, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--gold, #fdd835);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .slide-content p {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  font-weight: 300;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  font-weight: 400;
   letter-spacing: 1px;
 }
 
+/* ============================
+   DOTS
+   ============================ */
 .carousel-dots {
   position: absolute;
   bottom: 16px;
@@ -94,29 +117,29 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   cursor: pointer;
-  /* Transición simple */
-  transition: width 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
   padding: 0;
 }
 
 .dot:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .dot.active {
-  background: var(--gold);
-  border-color: var(--gold);
+  background: var(--gold, #fdd835);
+  border-color: var(--gold, #fdd835);
   width: 30px;
   border-radius: 10px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ============================
+   RESPONSIVE
+   ============================ */
 @media (max-width: 1024px) {
-  .carousel-container {
-    padding-top: 40%;
+  .carousel-slide img {
+    max-height: 450px;
   }
   .slide-content h2 {
     font-size: 2.4rem;
@@ -125,11 +148,10 @@
 
 @media (max-width: 768px) {
   .hero-carousel {
-    border-radius: var(--radius);
-    margin: 0 0 30px;
+    margin-bottom: 30px;
   }
-  .carousel-container {
-    padding-top: 50%;
+  .carousel-slide img {
+    max-height: 380px;
   }
   .slide-content h2 {
     font-size: 1.8rem;
@@ -137,7 +159,7 @@
   .slide-content p {
     font-size: 1rem;
   }
-  .slide-content {
+  .slide-overlay {
     padding: 20px;
   }
   .carousel-dots {
@@ -154,8 +176,8 @@
 }
 
 @media (max-width: 480px) {
-  .carousel-container {
-    padding-top: 60%;
+  .carousel-slide img {
+    max-height: 300px;
   }
   .slide-overlay {
     padding: 16px;
@@ -180,8 +202,8 @@
 }
 
 @media (max-width: 380px) {
-  .carousel-container {
-    padding-top: 70%;
+  .carousel-slide img {
+    max-height: 240px;
   }
   .slide-content h2 {
     font-size: 1rem;

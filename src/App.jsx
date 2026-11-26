@@ -9,7 +9,7 @@ import WhatsAppFloat from './components/common/WhatsAppFloat/WhatsAppFloat';
 // Páginas
 import HomePage from './pages/HomePage/HomePage';
 import ProductosPage from './pages/ProductosPage/ProductosPage';
-import NosotrosPage from './pages/Nosotros/NosotrosPage'; // Corregido: tu archivo se llama NosotrosPage.jsx
+import NosotrosPage from './pages/Nosotros/NosotrosPage';
 import ContactoPage from './pages/ContactoPage/ContactoPage';
 import UbicacionPage from './pages/UbicacionPage/UbicacionPage';
 
