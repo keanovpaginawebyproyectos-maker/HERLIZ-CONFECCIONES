@@ -4,17 +4,16 @@ import './HeroCarousel.css';
 const BASE = '/assets/images/ANUNCIOS';
 
 const slides = [
-  { id: 1,  image: `${BASE}/anuncio-2-index.jpg`, title: 'Colección 2025',        subtitle: 'Lo mejor en moda y confección' },
-  { id: 2,  image: `${BASE}/anuncio-3-index.jpg`, title: 'Calidad Premium',       subtitle: 'Materiales seleccionados para ti' },
-  { id: 3,  image: `${BASE}/anuncio-4-index.jpg`, title: 'Ofertas Especiales',    subtitle: 'Precios increíbles en toda la colección' },
-  { id: 4,  image: `${BASE}/anuncio-5-index.jpg`, title: 'Moda para Todos',       subtitle: 'Encuentra tu estilo ideal' },
-  { id: 5,  image: `${BASE}/anuncio-6-index.jpg`, title: 'Temporada Primavera',   subtitle: 'Las mejores tendencias' },
-  { id: 6,  image: `${BASE}/anuncio-7-index.jpg`, title: 'Outlet Especial',       subtitle: 'De lo mejor' },
-  { id: 7,  image: `${BASE}/anuncio-8-index.jpg`, title: 'Nuevos Ingresos',       subtitle: 'Las últimas novedades' },
-  { id: 8,  image: `${BASE}/anuncioBolsas.jpg`,   title: 'Bolsos Exclusivos',     subtitle: 'Diseños únicos para ti' },
-  { id: 9,  image: `${BASE}/anuncioGorras.jpg`,   title: 'Gorras Originales',     subtitle: 'Estilo y comodidad' },
-  { id: 10, image: `${BASE}/anuncioMnadiles.jpg`, title: 'Mandiles Profesionales', subtitle: 'Calidad y resistencia' },
-  { id: 11, image: `${BASE}/anuncioPolos.jpg`,    title: 'Polos de Calidad',      subtitle: 'Los mejores precios' },
+  { id: 1,  image: `${BASE}/anuncio-2-index.jpg`, title: 'Colección 2025',         subtitle: 'Lo mejor en moda y confección' },
+  { id: 2,  image: `${BASE}/anuncio-3-index.jpg`, title: 'Calidad Premium',        subtitle: 'Materiales seleccionados para ti' },
+  { id: 3,  image: `${BASE}/anuncio-4-index.jpg`, title: 'Ofertas Especiales',     subtitle: 'Precios increíbles en toda la colección' },
+  { id: 4,  image: `${BASE}/anuncio-5-index.jpg`, title: 'Moda para Todos',        subtitle: 'Encuentra tu estilo ideal' },
+  { id: 5,  image: `${BASE}/anuncio-6-index.jpg`, title: 'Temporada Primavera',    subtitle: 'Las mejores tendencias' },
+  { id: 6,  image: `${BASE}/anuncio-7-index.jpg`, title: 'Outlet Especial',        subtitle: 'Hasta 50% de descuento' },
+  { id: 7,  image: `${BASE}/anuncio-8-index.jpg`, title: 'Nuevos Ingresos',        subtitle: 'Las últimas novedades' },
+  { id: 8,  image: `${BASE}/anuncioBolsas.jpg`,   title: 'Bolsos Exclusivos',      subtitle: 'Diseños únicos para ti' },
+  { id: 9,  image: `${BASE}/anuncioMnadiles.jpg`, title: 'Mandiles Profesionales', subtitle: 'Calidad y resistencia' },
+  { id: 10, image: `${BASE}/anuncioPolos.jpg`,    title: 'Polos de Calidad',       subtitle: 'Los mejores precios' },
 ];
 
 const HeroCarousel = () => {
